@@ -24,7 +24,7 @@ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, 
       }
     }
 
-    stage("docker file and image')
+    stage('docker file and image')
           {
             steps{
                     sh 'docker -t build shashikrpet/insurance:1.0'

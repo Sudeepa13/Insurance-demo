@@ -10,7 +10,13 @@ pipeline{
       }
     }
 
-
+    stage ('maveen package')
+    {
+      steps{
+      sh 'mvn clean package'
+        }
+    }
+    stage(
 
 
     

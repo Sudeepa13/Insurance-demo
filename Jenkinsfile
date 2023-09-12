@@ -17,6 +17,12 @@ pipeline{
         }
     }
 
+    stage ('HTML report')
+    {
+      steps{
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/workspace/Insurance/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+      }
+    }
 
 
     

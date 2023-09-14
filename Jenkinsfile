@@ -30,17 +30,18 @@ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, 
                  sh 'docker build -t shashikrpet/insure-app:1.0 .'
             }
           }
-
-    stage('Docker image push'){
-      steps{
-      script{
-           docker.withRegistry('https://registry.hub.docker.com', 'r_docker'){
-
-        sh 'docker push shashikrpet/insure-app:1.0'
-      }
-      }
+    
+stage('Docker image push') {
+    steps {
+        script {
+            docker.withRegistry('https://registry.hub.docker.com', 'r_docker') {
+                sh 'docker push shashikrpet/insure-app:1.0'
+            }
+        }
     }
-    }
+}
+
+    
 
     
     

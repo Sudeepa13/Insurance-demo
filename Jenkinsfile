@@ -38,7 +38,7 @@ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, 
     
 stage('Docker image push') {
     steps {
-        withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'pwd', usernameVariable: 'usr')]) {
+        withCredentials([usernamePassword(credentialsId: 'D_log', passwordVariable: 'pwd', usernameVariable: 'usr')]) {
 
           sh 'docker login -u ${usr} -p ${pwd}'
 }

@@ -37,7 +37,7 @@ stage('Docker image push') {
     withCredentials([usernamePassword(credentialsId: 'dockerlog', passwordVariable: 'docker_pwd', usernameVariable: 'docker_usr')]) {
           sh ' docker login -u ${docker_usr} -p ${docker_pwd}'
 }
-      sh 'docker push shashikrpet/insure-app:2.0 .'
+      sh 'docker push shashikrpet/insure-app:2.0'
       
             }
         }

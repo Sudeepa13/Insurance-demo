@@ -32,20 +32,17 @@ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, 
     stage('docker file and image')
           {
             steps{
-                 sh 'docker build -t shashikrpet/insure-app:1.0 .'
+                 sh 'docker build -t shashikrpet/insure-app:2.0 .'
             }
           }
     
 stage('Docker image push') {
     steps {
-        // script {
-        //      docker.withRegistry('https://registry.hub.docker.com/', 'r_docker') {
-        //                 // Your Docker image build and push commands go here
-        //                 sh 'docker build -t shashikrpet/insure-app:1.0 .'
-        //                 sh 'docker push shashikrpet/insure-app:1.0'
+        withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'pwd', usernameVariable: 'usr')]) {
 
-      sh 'sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'  
-
+          sh 'docker login -u ${usr} -p ${pwd}'
+}
+      sh 'docker push shashikrpet/insure-app:2.0 .'
       
             }
         }

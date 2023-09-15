@@ -3,10 +3,6 @@ pipeline{
   tools{
    maven 'MAVEN_HOME'
   }
-
-environment {     
-    DOCKERHUB_CREDENTIALS= credentials('r_docker')     
-  } 
   
   stages{
     stage('checkout git'){

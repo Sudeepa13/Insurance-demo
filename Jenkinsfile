@@ -52,7 +52,5 @@ stage('Docker image push') {
     }
 }
 
-  }
-}
 
     

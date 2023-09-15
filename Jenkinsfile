@@ -3,6 +3,11 @@ pipeline{
   tools{
    maven 'MAVEN_HOME'
   }
+
+environment {     
+    DOCKERHUB_CREDENTIALS= credentials('r_docker')     
+  } 
+  
   stages{
     stage('checkout git'){
       steps{
@@ -24,20 +29,24 @@ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, 
       }
     }
 
-    // stage('docker file and image')
-    //       {
-    //         steps{
-    //              sh 'docker build -t shashikrpet/insure-app:1.0 .'
-    //         }
-    //       }
+    stage('docker file and image')
+          {
+            steps{
+                 sh 'docker build -t shashikrpet/insure-app:1.0 .'
+            }
+          }
     
 stage('Docker image push') {
     steps {
-        script {
-             docker.withRegistry('https://registry.hub.docker.com/', 'r_docker') {
-                        // Your Docker image build and push commands go here
-                        sh 'docker build -t shashikrpet/insure-app:1.0 .'
-                        sh 'docker push shashikrpet/insure-app:1.0'
+        // script {
+        //      docker.withRegistry('https://registry.hub.docker.com/', 'r_docker') {
+        //                 // Your Docker image build and push commands go here
+        //                 sh 'docker build -t shashikrpet/insure-app:1.0 .'
+        //                 sh 'docker push shashikrpet/insure-app:1.0'
+
+      sh 'sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'  
+
+      
             }
         }
     }

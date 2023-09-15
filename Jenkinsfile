@@ -34,7 +34,7 @@ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, 
     
 stage('Docker image push') {
     steps {
-       withCredentials([usernamePassword(credentialsId: 'Dockerhub-1', passwordVariable: 'docker-pwd', usernameVariable: 'docker-usr')]) {
+      withCredentials([usernamePassword(credentialsId: 'Dockerhub-1', passwordVariable: 'docker-pwd', usernameVariable: 'docker-usr')]) {
           sh ' docker login -u shashikrpet -p ${docker-pwd}'
 }
       sh 'docker push shashikrpet/insure-app:2.0 .'

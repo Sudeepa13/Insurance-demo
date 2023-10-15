@@ -3,10 +3,10 @@ pipeline {
    tools {
       maven 'M2_HOME'
          }
-stages {
-    stage('Git Checkout') {
-  steps {
-     git 'https://github.com/Sudeepa13/Insurance-demo.git'
+ stage('Checkout') {
+            steps {
+                timeout(time: 30, unit: 'SECONDS') {
+                    git branch: 'master', url: 'https://github.com/Sudeepa13/Insurance-demo.git''
         }
     }
     stage('Build Package') {

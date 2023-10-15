@@ -22,5 +22,13 @@ pipeline{
         sh 'docker build -t sudeedocacc/insurance:1 .'
       }
     }
+    stage ('Docker Push'){
+      steps{
+        withCredentials([usernamePassword(credentialsId: 'docid', passwordVariable: 'docker_pwd', usernameVariable: 'docker_usr')]) {
+        sh 'docker login -u ${docker_usr} -p ${docker_pwd}'
+}
+        sh 'docker push sudeedocacc/insurance:1'
+      }
+    }
 }
 }

@@ -6,7 +6,7 @@ pipeline {
     stages{
       stage('Git_checkout'){
         steps {
-          git 'https://github.com/Sudeepa13/Insurance-demo.git'
+          git 'git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Sudeepa13/Insurance-demo.git''
             } 
       }
       stage('Build Package'){

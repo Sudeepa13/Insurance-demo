@@ -19,15 +19,15 @@ pipeline{
     }
     stage ('Docker Build'){
       steps{
-        sh 'docker build -t sudeedocacc/insurance:1 .'
+        sh 'docker build -t sudeedockeracc/insurance:1 .'
       }
     }
-    stage ('Docker Push'){
+    stage ('Docker Image Push'){
       steps{
         withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'dockerpwd', usernameVariable: 'dockerusr')]) {
         sh 'docker login -u ${dockerusr} -p ${dockerpwd}'
 }
-        sh 'docker push sudeedocacc/insurance:1'
+        sh 'docker push sudeedockeracc/insurance:1'
       }
     }
 }

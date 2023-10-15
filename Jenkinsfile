@@ -1,16 +1,21 @@
-pipeline {
-   agent any
-   tools {
-      maven 'M2_HOME'
-         }
- stage('Git Checkout') {
-            steps {
-                    git branch: 'master', url: 'https://github.com/Sudeepa13/Insurance-demo.git'
+pipeline{
+  agent any
+  tools{
+   maven 'MAVEN_HOME'
+  }
+  
+  stages{
+    stage('checkout git'){
+      steps{
+          git branch: 'main', url: 'https://github.com/Sudeepa13/Insurance-demo.git'
+      }
+    }
+
+    stage ('maveen package')
+    {
+      steps{
+      sh 'mvn clean package'
         }
     }
-    stage('Build Package') {
-    steps {
-       sh 'mvn package'
     }
-  }
-    }
+}

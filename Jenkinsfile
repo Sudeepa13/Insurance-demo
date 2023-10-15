@@ -1,18 +1,18 @@
 pipeline {
-  agent any
-    tools {
+   agent any
+   tools {
       maven 'M2_HOME'
-    }
-    stages{
-      stage('Git_checkout'){
-        steps {
-          git branch: 'main' url: 'https://github.com/Sudeepa13/Insurance-demo.git'
-            } 
-      }
-      stage('Build Package'){
-        steps {
-          sh 'mvn clean package'
+         }
+stages {
+    stage('Git Checkout') {
+  steps {
+     git 'https://github.com/Sudeepa13/Insurance-Demo.git'
         }
-      }
+    }
+    stage('Build Package') {
+    steps {
+       sh 'mvn package'
+    }
+  }
     }
   }

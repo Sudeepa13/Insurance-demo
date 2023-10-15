@@ -30,5 +30,12 @@ pipeline{
         sh 'docker push sudeedockeracc/insurance:1'
       }
     }
+    stage ('Deploy'){
+      steps{
+        ansiblePlaybook credentialsId: 'ubuntu', disableHostKeyChecking: true, playbook: 'deploy.yml'
+
+      }
+    }
+    
 }
 }

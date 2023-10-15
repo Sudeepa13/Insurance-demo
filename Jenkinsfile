@@ -24,8 +24,8 @@ pipeline{
     }
     stage ('Docker Push'){
       steps{
-        withCredentials([usernamePassword(credentialsId: 'docid', passwordVariable: 'docker_pwd', usernameVariable: 'docker_usr')]) {
-        sh 'docker login -u ${docker_usr} -p ${docker_pwd}'
+        withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'dockerpwd', usernameVariable: 'dockerusr')]) {
+        sh 'docker login -u ${dockerusr} -p ${dockerpwd}'
 }
         sh 'docker push sudeedocacc/insurance:1'
       }

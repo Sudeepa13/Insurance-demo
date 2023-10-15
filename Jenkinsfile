@@ -32,7 +32,7 @@ pipeline{
     }
     stage ('Deploy'){
       steps{
-        ansiblePlaybook credentialsId: 'ubuntu', disableHostKeyChecking: true, playbook: 'deploy.yml'
+        ansiblePlaybook credentialsId: 'ansibleid', disableHostKeyChecking: true, playbook: 'deploy.yml'
 
       }
     }

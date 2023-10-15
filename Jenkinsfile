@@ -6,7 +6,7 @@ pipeline {
  stage('Checkout') {
             steps {
                 timeout(time: 30, unit: 'SECONDS') {
-                    git branch: 'master', url: 'https://github.com/Sudeepa13/Insurance-demo.git''
+                    git branch: 'master', url: 'https://github.com/Sudeepa13/Insurance-demo.git'
         }
     }
     stage('Build Package') {
